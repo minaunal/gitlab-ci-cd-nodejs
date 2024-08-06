@@ -10,7 +10,9 @@ build:
   image: node:18
   script:
     - npm install
-    - npm run start
+    - npm run start & echo $! > node.pid
+    - sleep 10
+    - kill $(cat node.pid)
 
 # Test stage
 test:
